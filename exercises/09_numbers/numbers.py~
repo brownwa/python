@@ -1,0 +1,13 @@
+#!/usr/local/bin/python
+
+# Monday April 25, 2016
+# numbers.py
+# Waheed Brown
+#
+# Python Tutorial
+# http://www.tutorialspoint.com/python/python_numbers.htm
+
+var a = 2 + 3j
+var b = 4 + 5j
+
+print "a * b = ", a * b 

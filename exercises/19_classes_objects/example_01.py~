@@ -1,0 +1,16 @@
+#!/usr/local/bin/python
+
+# Saturday December 17, 2016
+# example_01.py
+# Waheed Brown
+#
+# Python Advanced Tutorial: Classes/Objects
+#
+# Example 1:
+# Create a simple Python class
+#
+# Reference:
+# https://www.tutorialspoint.com/python/python_classes_objects.htm
+
+def main(argv):
+    print("Main function")

@@ -1,0 +1,94 @@
+Saturday January 23, 2016
+README
+Waheed Brown
+
+CONTENTS
+--------
+1. Python Debugger
+2. Valgrind
+3. Bytecode - .pyc Files
+
+1. PYTHON DEBUGGER
+
+Python Debugger (Python 2.x):
+https://docs.python.org/2/library/pdb.html
+
+- The below trace() method is by far the easiest for debugging, without
+  command line arguments.
+- If you want to provide command line arguments to the program then use
+  the below "$ python -d" method.
+
+
+METHOD 1:
+
+Set breakpoint:
+import pdb; pdb.set_trace()
+
+METHOD 2:
+
+$ python -d
+>>> import pdb
+>>> import test
+>>> argv = ['arg1', 'arg2', 'arg3']
+>>> pdb.run( 'test.main(argv)' )
+...
+(Pdb) step
+(Pdb) print opt
+(Pdb) args # print argument list of current function
+(Pd.) print __name__ # print name of current function
+(Pdb) continue
+...
+(Pdb) exit
+
+
+DEBUGGER COMMANDS:
+
+- [s]tep
+- [p]rint
+
+  example:
+
+    > p j, num, i # prints comma separated values in brackets
+    > (5, 10, 2)
+
+
+2. VALGRIND
+
+In order to use Python with Valgrind you need to build the Python source
+code [1] with specific options (try to pick the same source code release
+number as your default installed Python version):
+
+  $ ./configure --with-pydebug --without-pymalloc --prefix /opt/debugpython/
+  $ make OPT=-g
+  $ make install
+
+The install location for the binary is:
+
+  /opt/debugpython/bin/python
+
+This means that you need to change the shebang line in any Python code that
+you wish to test with Valgrind:
+
+  #!/opt/debugpython/bin/python
+
+Alternatively, you can leave your code unmodified and just point to the
+debug Python version when you execute Valgrind:
+
+  $ valgrind /opt/debugpython/bin/python your_program.py
+
+REFERENCES:
+
+1. https://www.python.org/downloads/release
+2. https://code.google.com/archive/p/distnumpy/wikis/valgrind.wiki
+
+
+3. BYTECODE - .pyc FILES
+
+$ python -m your_program.py
+
+This will produce a .pyc file which can be imported as a module
+in other Python programs. Mildly obfuscates your code. To
+recursively compile all code in nested folders run:
+
+$ python -m compileall
+

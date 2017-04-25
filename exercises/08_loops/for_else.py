@@ -1,0 +1,19 @@
+#!/usr/local/bin/python
+
+# Saturday February 6, 2016
+# for_else.py
+# Waheed Brown
+#
+# Python Tutorial
+# http://www.tutorialspoint.com/python/python_for_loop.htm
+
+#import pdb; pdb.set_trace() # DEBUG
+
+for num in range(10, 20) :    # iterate from 10 to 20
+    for i in range(2, num) :  # iteratre from 2 to num
+        if( (num % i) == 0) : # if i is a factor of num
+            j = num / i       # then find the secon factor, j
+            print '%d equals %d * %d' % (num, i, j)
+            break
+    else: # executes once range() is exhausted
+        print num, 'is a prime number'
